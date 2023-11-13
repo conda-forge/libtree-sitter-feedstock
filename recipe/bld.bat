@@ -5,7 +5,7 @@ cmake -S . -G Ninja -B build ^
     %CMAKE_ARGS% || goto :error
 cmake --build build || goto :error
 cmake --install build || goto :error
-copy build\tree-sitter.dll %LIBRARY_PREFIX%\bin
+move %LIBRARY_PREFIX%\lib\tree-sitter.dll %LIBRARY_PREFIX%\bin
 
 goto :EOF
 
