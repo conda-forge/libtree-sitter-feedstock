@@ -11,21 +11,21 @@ source:
 
 build:
   number: 0
-  skip: true  # [win]
 
 requirements:
   build:
     - {{ compiler('c') }}
-    - make
+    - cmake  # [win]
+    - make  # [unix]
+    - ninja  # [win]
 
 test:
   commands:
-    - test -f ${PREFIX}/lib/libtree-sitter${SHLIB_EXT}
+    - test -f ${PREFIX}/lib/libtree-sitter${SHLIB_EXT}  # [unix]
 
 about:
   home: https://tree-sitter.github.io/
   license: MIT
-  license_family: MIT
   license_file: LICENSE
   summary: Shared C library for tree-sitter
   dev_url: https://github.com/tree-sitter/tree-sitter
