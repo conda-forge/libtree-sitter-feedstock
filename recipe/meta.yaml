@@ -1,5 +1,5 @@
 {% set name = "libtree-sitter" %}
-{% set version = "0.20.8" %}
+{% set version = "0.22.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/tree-sitter/tree-sitter/archive/v{{ version }}.tar.gz
-  sha256: 6181ede0b7470bfca37e293e7d5dc1d16469b9485d13f13a605baec4a8b1f791
+  sha256: 1cc0c832c6cc3d04f0b702247fac3dac45f958b0ee1f946619b7ae7b67258060
 
 build:
   number: 0
