@@ -1,5 +1,5 @@
 context:
-  version: "0.24.7"
+  version: "0.25.0"
 
 package:
   name: libtree-sitter
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/tree-sitter/tree-sitter/archive/v${{ version }}.tar.gz
-  sha256: 7cbc13c974d6abe978cafc9da12d1e79e07e365c42af75e43ec1b5cdc03ed447
+  sha256: 3729e98e54a41a4c03f4f6c0be580d14ed88c113d75acf15397b16e05cf91129
 
 build:
   number: 0
