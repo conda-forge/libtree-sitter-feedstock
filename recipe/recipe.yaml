@@ -10,7 +10,7 @@ source:
   sha256: 26791f69182192fef179cd58501c3226011158823557a86fe42682cb4a138523
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -26,9 +26,20 @@ requirements:
     - ${{ pin_subpackage('libtree-sitter', upper_bound='x.x') }}
 
 tests:
-  - script:
-      - if: unix
-        then: test -f ${PREFIX}/lib/libtree-sitter${SHLIB_EXT}
+  - if: unix
+    then:
+      - requirements:
+          run:
+            - ${{ stdlib("c") }}
+            - ${{ compiler('c') }}
+        script:
+          - test -f ${PREFIX}/lib/libtree-sitter${SHLIB_EXT}
+          - if: linux
+            then:
+              - CC=$(${PREFIX}/bin/*-gcc -dumpmachine)-gcc
+              - echo "int main() {}" | ${CC} -x c -L${PREFIX}/lib -ltree-sitter -
+            else:
+              - echo "int main() {}" | ${PREFIX}/bin/clang -x c -L${PREFIX}/lib -ltree-sitter -
 
 about:
   license: MIT
