@@ -10,18 +10,18 @@ source:
   sha256: ed464a90b7d73cdcf7acecf132186b905998f80f216be262f101ffc49d6459d7
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
     - ${{ stdlib("c") }}
     - ${{ compiler('c') }}
     - if: win
-      then: cmake
-    - if: unix
-      then: make
-    - if: win
-      then: ninja
+      then:
+        - cmake
+        - ninja
+      else:
+        - make
   run_exports:
     - ${{ pin_subpackage('libtree-sitter', upper_bound='x.x') }}
 
