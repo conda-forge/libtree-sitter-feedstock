@@ -4,6 +4,9 @@ project(treesitter C)
 add_library(tree-sitter lib/src/lib.c)
 target_include_directories(tree-sitter
   PRIVATE lib/src lib/include)
+set_target_properties(tree-sitter PROPERTIES
+  C_STANDARD 11
+  C_STANDARD_REQUIRED ON)
 
 install(FILES
   lib/include/tree_sitter/api.h
