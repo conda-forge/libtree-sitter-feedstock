@@ -34,12 +34,7 @@ tests:
             - ${{ compiler('c') }}
         script:
           - test -f ${PREFIX}/lib/libtree-sitter${SHLIB_EXT}
-          - if: linux
-            then:
-              - CC=$(${PREFIX}/bin/*-gcc -dumpmachine)-gcc
-              - echo "int main() {}" | ${CC} -x c -L${PREFIX}/lib -ltree-sitter -
-            else:
-              - echo "int main() {}" | ${PREFIX}/bin/clang -x c -L${PREFIX}/lib -ltree-sitter -
+          - echo "int main() {}" | ${CC} -x c -L${PREFIX}/lib -ltree-sitter -
 
 about:
   license: MIT
